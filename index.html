@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Budget Buddy v2</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button id="btnSettings" class="iconBtn" aria-label="Settings">⚙️</button>
+    <div class="topbarTitle" id="topbarTitle">Today</div>
+    <div class="topbarSpacer"></div>
+  </header>
+
+  <main id="view" class="view"></main>
+
+  <nav class="bottomNav">
+    <button class="navBtn" data-route="#today">Today</button>
+    <button class="navBtn" data-route="#history">History</button>
+    <button class="navBtn navAdd" id="btnAdd" aria-label="Add">＋</button>
+    <button class="navBtn" data-route="#calendar">Calendar</button>
+    <button class="navBtn" data-route="#bills">Bills</button>
+  </nav>
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay hidden"></div>
+
+  <!-- Add menu sheet -->
+  <section id="sheetAddMenu" class="sheet hidden" role="dialog" aria-modal="true">
+    <div class="sheetHeader">
+      <div class="sheetTitle">Add</div>
+      <button class="iconBtn" data-close-sheet>✕</button>
+    </div>
+    <div class="sheetBody">
+      <button class="primaryBtn" id="btnOpenNewPurchase">New Purchase</button>
+      <button class="secondaryBtn" id="btnOpenNewCheck">New Check</button>
+    </div>
+  </section>
+
+  <!-- New Purchase sheet -->
+  <section id="sheetPurchase" class="sheet hidden" role="dialog" aria-modal="true">
+    <div class="sheetHeader">
+      <div class="sheetTitle">New Purchase</div>
+      <button class="iconBtn" data-close-sheet>✕</button>
+    </div>
+    <div class="sheetBody">
+      <label class="field">
+        <div class="label">Amount</div>
+        <input id="pAmount" type="number" inputmode="decimal" placeholder="0.00" />
+      </label>
+
+      <label class="field">
+        <div class="label">Pod</div>
+        <select id="pPod"></select>
+      </label>
+
+      <label class="field">
+        <div class="label">Date</div>
+        <input id="pDate" type="date" />
+      </label>
+
+      <label class="field">
+        <div class="label">Note (optional)</div>
+        <input id="pNote" type="text" placeholder="Merchant / note" />
+      </label>
+
+      <div id="pError" class="errorText hidden"></div>
+
+      <button class="primaryBtn" id="btnApplyPurchase">Apply Purchase</button>
+    </div>
+  </section>
+
+  <!-- Settings modal (simple start) -->
+  <section id="sheetSettings" class="sheet hidden" role="dialog" aria-modal="true">
+    <div class="sheetHeader">
+      <div class="sheetTitle">Settings</div>
+      <button class="iconBtn" data-close-sheet>✕</button>
+    </div>
+    <div class="sheetBody">
+      <div class="tabRow">
+        <button class="tabBtn active" data-tab="balances">Update Balances</button>
+        <button class="tabBtn" data-tab="splits">Split %</button>
+        <button class="tabBtn" data-tab="importexport">Import/Export</button>
+        <button class="tabBtn" data-tab="appearance">Appearance</button>
+      </div>
+
+      <div id="tab_balances" class="tabPane">
+        <label class="field">
+          <div class="label">Savings Balance</div>
+          <input id="sSavings" type="number" inputmode="decimal" placeholder="0.00" />
+        </label>
+
+        <div id="podBalanceFields"></div>
+
+        <button class="primaryBtn" id="btnSaveBalances">Save Balances</button>
+      </div>
+
+      <div id="tab_splits" class="tabPane hidden">
+        <label class="field"><div class="label">Savings %</div><input id="spSavings" type="number" step="0.01" /></label>
+        <label class="field"><div class="label">Pod 1 %</div><input id="spPod1" type="number" step="0.01" /></label>
+        <label class="field"><div class="label">Pod 2 %</div><input id="spPod2" type="number" step="0.01" /></label>
+        <label class="field"><div class="label">Pod 3 %</div><input id="spPod3" type="number" step="0.01" /></label>
+        <div id="splitError" class="errorText hidden"></div>
+        <button class="primaryBtn" id="btnSaveSplits">Save Splits</button>
+      </div>
+
+      <div id="tab_importexport" class="tabPane hidden">
+        <button class="secondaryBtn" id="btnExport">Export Data</button>
+        <label class="field">
+          <div class="label">Import (replaces everything)</div>
+          <input id="importFile" type="file" accept="application/json" />
+        </label>
+        <div id="importError" class="errorText hidden"></div>
+      </div>
+
+      <div id="tab_appearance" class="tabPane hidden">
+        <label class="switchRow">
+          <span>Dark Mode</span>
+          <input id="toggleDark" type="checkbox" />
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
