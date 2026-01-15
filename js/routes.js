@@ -10,4 +10,3 @@ export function setActiveNav(route) {
     btn.classList.toggle("active", r === route);
   });
 }
-
