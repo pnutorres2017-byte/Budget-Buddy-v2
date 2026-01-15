@@ -1,4 +1,3 @@
-
 export function dollarsToCents(value) {
   const n = Number(value);
   if (!Number.isFinite(n)) return null;
