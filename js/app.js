@@ -41,4 +41,3 @@ function onRoute(route) {
     view.innerHTML = renderPlaceholder("Bills", "Next: bills + debt screens.");
   }
 }
-
