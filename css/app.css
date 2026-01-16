@@ -41,4 +41,3 @@ input, select { width: 100%; padding: 12px; border-radius: 12px; border: 1px sol
 .tabBtn.active { color: var(--accent); border-color: var(--accent); }
 
 .switchRow { display: flex; align-items: center; justify-content: space-between; padding: 12px; border: 1px solid var(--border); border-radius: 12px; }
-
